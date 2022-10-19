@@ -9,6 +9,11 @@ class Order extends BasePage{
         cy.visit('/');
     }
 
+    visitSpecificProduct(){
+        cy.log('**Open page of specific product**');
+        cy.visit('https://automationteststore.com/index.php?rt=product/product&product_id=52');
+    }
+
     getProductQuantity(){
         return cy.get('#product_quantity');
     }
