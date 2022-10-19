@@ -2,7 +2,7 @@
 import authorizationPage from '../support/pages/AuthorizationPage';
 import accountPage from '../support/pages/AccountPage';
 import user from '../fixtures/user.json';
-import order from '../support/pages/Order';
+import orderPage from '../support/pages/OrderPage';
 //import {searchExistingProduct} from '../support/helper'
 
 
@@ -13,12 +13,12 @@ import order from '../support/pages/Order';
     authorizationPage.submitLoginForm(user.userName, user.password);
     accountPage.getUserNameFromHeading().should('contain', user.firstName).and('contain', "My Account");
   
-     cy.visit('https://automationteststore.com/index.php?rt=product/product&product_id=52');
-     order.submitOrder(2)
+     orderPage.visitSpecificProduct();
+     orderPage.submitOrder(2)
      accountPage.getUserNameFromHeading()
      .should('contain', 'Your Order Has Been Processed!');
 
-     order.getContentpanel()
+     orderPage.getContentpanel()
      .should('contain', 'Thank you for shopping with us!')
      .and('contain', 'Your order ')
      .and('contain', 'has been created!');
@@ -31,11 +31,11 @@ import order from '../support/pages/Order';
     accountPage.getUserNameFromHeading().should('contain', user.firstName).and('contain', "My Account");
   
      
-     order.submitSearchOrder(2, 'Benefit Bella Bamba')
+     orderPage.submitSearchOrder(2, 'Benefit Bella Bamba')
      accountPage.getUserNameFromHeading()
      .should('contain', 'Your Order Has Been Processed!');
 
-     order.getContentpanel()
+     orderPage.getContentpanel()
      .should('contain', 'Thank you for shopping with us!')
      .and('contain', 'Your order ')
      .and('contain', 'has been created!');
