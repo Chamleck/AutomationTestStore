@@ -2,7 +2,7 @@
 //імпортнули об'єкт з юзером
 import user from '../fixtures/user.json';
 //імпортнули функцію
-import {searchExistingProduct} from '../support/helper'
+import {searchExistingProduct} from '../support/pages/Order';
 
 it('Place order', () => {
   //сетимо кукі який відповідає за авторизацію, це замість проходження авторизації
