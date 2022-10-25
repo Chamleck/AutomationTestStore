@@ -2,7 +2,7 @@
 //імпортнули об'єкт з юзером
 import user from '../fixtures/user.json';
 //імпортнули функцію
-import {searchExistingProduct} from '../support/pages/Order';
+import {searchExistingProduct,searchProductWithRecursion} from '../support/pages/Order';
 
 it('Place order', () => {
   //сетимо кукі який відповідає за авторизацію, це замість проходження авторизації
@@ -30,7 +30,12 @@ it('Place order via search', () => {
 
   cy.visit('/');
 
-  searchExistingProduct('Benefit Bella Bamba');
+  cy.get('#filter_keyword')
+  .type('i')
+  .closest('form')
+  .submit();
+
+  searchProductWithRecursion('Benefit Bella Bamba');
 
   cy.get('#product_quantity').clear().type('4');
   cy.get('.productpagecart').click();
