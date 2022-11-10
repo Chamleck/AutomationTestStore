@@ -3,7 +3,7 @@
 import user from '../fixtures/user.json';
 //імпортнули функцію
 import {
-  searchProductWithRecursion
+  searchProductWithRecursion,searchProduct
 } from '../support/helper'
 
 it('Place order via search', () => {
@@ -12,12 +12,12 @@ it('Place order via search', () => {
 
   cy.visit('/');
 
-  cy.get('#filter_keyword')
+    cy.get('#filter_keyword')
     .type('i')
     .closest('form')
     .submit();
 
-  searchProductWithRecursion('"Benefit Bella Bamba"');
+  searchProduct('Benefit Bella Bamba');
 
   cy.get('#product_quantity').clear().type('4');
   cy.get('.productpagecart').click();
