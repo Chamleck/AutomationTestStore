@@ -1,10 +1,13 @@
 pipeline {
+    
     agent any
+
     tools{nodejs "NodeJS"}
+
     stages {
-        stage('Build') {
+        stage('Install dependencies') {
             steps {
-                echo 'Building..'
+                sh 'npm install'
             }
         }
         stage('Cypress run') {
